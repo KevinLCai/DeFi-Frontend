@@ -1,12 +1,15 @@
 import React from 'react';
-import MyComponent from './MyComponent';
+// import Test from './Test';
+import TradingDashboard from './TradingDashboard';
 
 function App() {
   return (
     <div className="App">
-      <MyComponent />
+      {/* <Test/> */}
+      <TradingDashboard/>
     </div>
   );
 }
 
 export default App;
+
