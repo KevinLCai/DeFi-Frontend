@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+// import Chart from "./Chart";
+
 
 function TradingDashboard() {
   const [message, setMessage] = useState("");
@@ -26,6 +28,7 @@ function TradingDashboard() {
         <p>Loading...</p>
       ) : message ? (
         <p>{message}</p>
+        // <Chart data={message} />
       ) : (
         <p>No message...</p>
       )}

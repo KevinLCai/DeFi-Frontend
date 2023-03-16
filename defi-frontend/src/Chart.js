@@ -17,6 +17,7 @@ function Chart(props) {
   return (
     <div className="chart">
       <Line data={chartData} />
+      {/* <p>{chartData}</p> */}
     </div>
   );
 }
