@@ -1,12 +1,13 @@
 import React from 'react';
 import Test from './Test';
-import Test2 from './Test2';
+import Chart from './Chart';
 
 function App() {
   return (
     <div className="App">
       <Test/>
-      <Test2/>
+
+      <Chart/>
     </div>
   );
 }

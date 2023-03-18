@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 function Test() {
+  const [data, setName] = useState('');
   const [message, setMessage] = useState('');
 
-  const handleClick = () => {
-    axios.post('http://127.0.0.1:5000/data', { name: 'John' })
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios.post('http://127.0.0.1:5000/data', { data: data })
       .then(response => {
-        setMessage(JSON.stringify(response.data));
-        console.log(response.data);
+        setMessage(response.data.message);
+        console.log(response.data.message)
       })
       .catch(error => {
         console.error(error);
@@ -17,7 +19,13 @@ function Test() {
 
   return (
     <div>
-      <button onClick={handleClick}>Say Hello</button>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Name:
+          <input type="text" value={data} onChange={(event) => setName(event.target.value)} />
+        </label>
+        <button type="submit">Say Hello</button>
+      </form>
       {message && <p>{message}</p>}
     </div>
   );
