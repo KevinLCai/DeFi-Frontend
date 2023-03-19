@@ -7,7 +7,7 @@ function Test() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://127.0.0.1:5000/data', { data })
+    axios.post('http://127.0.0.1:5000/data', { data: data })
       .then(response => {
         setMessage(response.data.message);
         console.log(response.data.message)

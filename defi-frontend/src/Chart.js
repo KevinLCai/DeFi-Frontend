@@ -1,24 +1,39 @@
-import React from "react";
-import { Line } from "react-chartjs-2";
+import React, { useEffect, useRef, useState } from 'react';
+import { createChart } from 'lightweight-charts';
+import axios from 'axios';
 
-function Chart(props) {
-  const chartData = {
-    labels: props.data.labels,
-    datasets: [
-      {
-        label: "My Dataset",
-        data: props.data.values,
-        borderColor: "rgba(75,192,192,1)",
-        backgroundColor: "rgba(75,192,192,0.4)",
-      },
-    ],
-  };
+function Chart() {
+  const chartContainerRef = useRef();
+  const [data, setData] = useState([]);
 
-  return (
-    <div className="chart">
-      <Line data={chartData} />
-    </div>
-  );
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.post('http://127.0.0.1:5000/chart');
+        setData(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const chart = createChart(chartContainerRef.current, {
+      width: 600,
+      height: 300
+    });
+
+    const lineSeries = chart.addLineSeries();
+    lineSeries.setData(data);
+
+    return () => {
+      chart.remove();
+    };
+  }, [data]);
+
+  return <div ref={chartContainerRef} />;
 }
 
 export default Chart;
