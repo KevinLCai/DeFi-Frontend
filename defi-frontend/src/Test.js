@@ -1,34 +1,29 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import socketIOClient from 'socket.io-client';
 
-function Test() {
-  const [data, setName] = useState('');
-  const [message, setMessage] = useState('');
+const ENDPOINT = "http://localhost:3000"; // the endpoint where the websocket is running
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    axios.post('http://127.0.0.1:5000/data', { data })
-      .then(response => {
-        setMessage(response.data.message);
-        console.log(response.data.message)
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  };
+function App() {
+  const [dataFromBackend, setDataFromBackend] = useState("");
+
+  useEffect(() => {
+    const socket = socketIOClient(ENDPOINT);
+
+    socket.on("data_from_backend", (data) => {
+      console.log(`Received data from backend: ${JSON.stringify(data)}`);
+      setDataFromBackend(data.data.message);
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name:
-          <input type="text" value={data} onChange={(event) => setName(event.target.value)} />
-        </label>
-        <button type="submit">Say Hello</button>
-      </form>
-      {message && <p>{message}</p>}
+      <p>Data from backend: {dataFromBackend}</p>
     </div>
   );
 }
 
-export default Test;
+export default App;
