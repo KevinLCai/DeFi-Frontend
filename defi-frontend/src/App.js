@@ -11,8 +11,8 @@ function App() {
       <Chart/>
       <AddToken/>
       <GetToken/>
-      {/* <TradingDataDisplay/> */}
-      <Test/>
+      <TradingDataDisplay/>
+      {/* <Test/> */}
     </div>
   );
 }
