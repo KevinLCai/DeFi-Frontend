@@ -1,0 +1,34 @@
+{
+  "name": "defi-frontend",
+  "version": "1.0.0",
+  "description": "This repository is the frontend of a larger DeFi trading project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KevinLCai/DeFi-Frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KevinLCai/DeFi-Frontend/issues"
+  },
+  "homepage": "https://github.com/KevinLCai/DeFi-Frontend#readme",
+  "dependencies": {
+    "@kurkle/color": "^0.3.2",
+    "asynckit": "^0.4.0",
+    "axios": "^1.3.4",
+    "chart.js": "^4.2.1",
+    "combined-stream": "^1.0.8",
+    "delayed-stream": "^1.0.0",
+    "follow-redirects": "^1.15.2",
+    "form-data": "^4.0.0",
+    "js-tokens": "^8.0.1",
+    "loose-envify": "^1.4.0",
+    "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
+    "socket.io-client": "^4.6.1"
+  }
+}
