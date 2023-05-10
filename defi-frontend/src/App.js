@@ -3,7 +3,7 @@ import Chart from './Chart';
 import AddToken from './AddToken';
 import GetToken from './GetToken';
 import TradingDataDisplay from './TradingDataDisplay';
-import Test from './Test';
+import DealFromDatabase from './DealFromDatabase';
 
 function App() {
   return (
@@ -11,8 +11,8 @@ function App() {
       <Chart/>
       <AddToken/>
       <GetToken/>
-      <TradingDataDisplay/>
-      {/* <Test/> */}
+      {/* <TradingDataDisplay/> */}
+      <DealFromDatabase/>
     </div>
   );
 }
